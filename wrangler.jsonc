@@ -6,6 +6,11 @@
     "compatibility_flags": [
         "nodejs_compat"
     ],
+    "vars": {
+        "MEDUSA_BACKEND_URL": "https://ellel-oversize.onrender.com",
+        "NEXT_PUBLIC_MEDUSA_BACKEND_URL": "https://ellel-oversize.onrender.com",
+        "NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY": "pk_ad4e9a82769b7d36421cfd34b8122f8dc90dbfec82690294bae32fd00d5968bc"
+    },
     "assets": {
         "directory": ".open-next/assets",
         "binding": "ASSETS"
