@@ -1,6 +1,5 @@
-import type { NotReadyDefaultConfig } from "@opennextjs/cloudflare";
-
-const config: NotReadyDefaultConfig = {
+/** @type {import('@opennextjs/cloudflare').NotReadyDefaultConfig} */
+const config = {
     default: {
         override: {
             wrapper: "cloudflare-node",
