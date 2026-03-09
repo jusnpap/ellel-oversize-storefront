@@ -10,7 +10,7 @@ export default {
             queue: "dummy",
         },
     },
-    edgeExternals: [],
+    edgeExternals: ["node:crypto"],
     middleware: {
         external: true,
         override: {
