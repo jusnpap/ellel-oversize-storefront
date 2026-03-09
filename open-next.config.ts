@@ -1,21 +1,25 @@
-/** @type {import('@opennextjs/cloudflare').NotReadyDefaultConfig} */
-const config = {
+export default {
     buildCommand: "npm run build:next",
     default: {
         override: {
             wrapper: "cloudflare-node",
             converter: "edge",
             proxyExternalRequest: "fetch",
+            incrementalCache: "dummy",
+            tagCache: "dummy",
+            queue: "dummy",
         },
     },
+    edgeExternals: [],
     middleware: {
         external: true,
         override: {
             wrapper: "cloudflare-edge",
             converter: "edge",
             proxyExternalRequest: "fetch",
+            incrementalCache: "dummy",
+            tagCache: "dummy",
+            queue: "dummy",
         },
     },
 };
-
-export default config;
