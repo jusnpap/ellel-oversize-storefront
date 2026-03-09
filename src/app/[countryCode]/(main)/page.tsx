@@ -18,30 +18,44 @@ export default async function Home(props: {
 
   const { countryCode } = params
 
-  const region = await getRegion(countryCode)
+  try {
+    const region = await getRegion(countryCode)
 
-  const { collections } = await listCollections({
-    fields: "id, handle, title",
-  })
+    const { collections } = await listCollections({
+      fields: "id, handle, title",
+    })
 
-  if (!collections || !region) {
-    return null
-  }
+    if (!collections || !region) {
+      return null
+    }
 
-  return (
-    <>
-      <Hero />
-      <div className="py-12 content-container">
-        <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-3xl font-bold uppercase tracking-tighter text-ellel-purple">
-            NUEVOS MODELOS
-          </h2>
-          <div className="h-1 w-24 bg-ellel-yellow mt-2"></div>
+    return (
+      <>
+        <Hero />
+        <div className="py-12 content-container">
+          <div className="flex flex-col items-center text-center mb-16">
+            <h2 className="text-3xl font-bold uppercase tracking-tighter text-ellel-purple">
+              NUEVOS MODELOS
+            </h2>
+            <div className="h-1 w-24 bg-ellel-yellow mt-2"></div>
+          </div>
+          <ul className="flex flex-col gap-x-6">
+            <FeaturedProducts collections={collections} region={region} />
+          </ul>
         </div>
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
-        </ul>
-      </div>
-    </>
-  )
+      </>
+    )
+  } catch (error) {
+    console.warn("Skipping home page data fetching due to backend error:", error)
+    return (
+      <>
+        <Hero />
+        <div className="py-12 content-container text-center">
+          <p className="text-ui-fg-subtle">
+            Estamos preparando los nuevos modelos. Por favor, vuelve a intentarlo más tarde.
+          </p>
+        </div>
+      </>
+    )
+  }
 }
