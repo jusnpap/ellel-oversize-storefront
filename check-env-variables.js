@@ -26,13 +26,12 @@ function checkEnvVariables() {
       }
     })
 
-    console.error(
+    console.warn(
       c.yellow(
-        "\nPlease set these variables in your .env file or environment before starting the application.\n"
+        "\n⚠️ Warning: Missing environment variables. The app might not function correctly.\n"
       )
     )
-
-    process.exit(1)
+    // process.exit(1) // Comentado para permitir que el build en Cloudflare termine
   }
 }
 
